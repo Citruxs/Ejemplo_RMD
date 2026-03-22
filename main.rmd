@@ -1,0 +1,87 @@
+---
+# Esta es la configuración general del documento
+output: 
+  bookdown::pdf_document2: # Tipo de archivo de salida: PDF
+    number_sections: no # Para que no imprima el número de la sección
+    toc: no # Para que no cree una tabla de contenidos
+    highlight: tango # Para el color de los resaltados
+    includes:
+      in_header: Auxiliares/preambulo.tex # Es el preambulo del tex para incluir paquetes
+                                          # y personalizaciones
+      before_body: Auxiliares/portada.tex # Para la portada que va antes del contenido
+      after_body: null # Para el final del documento, nulo por que no se agrega nada
+geometry: margin=2.5cm # Margen general del documento
+urlcolor: blue # Color de los resaltados de los enlaces
+---
+
+<!--
+HASH CRC32: a4089a29
+-->
+
+```{r setup, include=FALSE}
+#Limpieza del entorno
+rm(list = ls(all.names = TRUE))
+
+# Liberación de la memoria
+gc()
+
+# Opciones globales de los chunks de código
+knitr::opts_chunk$set(
+	error = F, # Con esto no se muestran los errores
+	fig.align = "center", # Con este se alienan todas las imágenes al centro
+	fig.dim = c(5, 3), # Con este se establece el tamaño de las imágenes, en este caso
+	                   # 5 de ancho y 3 de alto, esta en pulgadas
+	message = FALSE, # Se ocultan los mensajes de los chunks
+	warning = FALSE, # Se ocultan los warning de los chunks
+	echo = FALSE # Solo se muestra la salida para todos los chunks
+)
+
+# Aquí carga las librerías que tengas, siempre que quieras usar una, ejecuta este chunk
+# Nunca cargues una librería en su archivo de EjercicioK.RMD, todo cargalo aquí
+library(tidyverse)
+
+#Estilo global de gráficos
+theme_set(theme_minimal())
+
+```
+
+<!--
+Con los siguientes chunks se puede anexar cada ejercicio por separado para la compilación final y así se puedan unir todos en uno solo
+-->
+
+## 1.Titulo del ejercicio 1
+```{r child="Ejercicios/Ejercicio1.Rmd"}
+
+```
+
+<!--
+Esto para que se separen las hojas
+-->
+
+\newpage
+
+## 2. Titulo del ejercicio 2
+```{r, child = "Ejercicios/Ejercicio2.Rmd"}
+
+```
+
+\newpage
+
+## 3. Titulo del ejercicio 3
+```{r, child = "Ejercicios/Ejercicio3.Rmd"}
+
+```
+
+\newpage
+
+## 4. Titulo del ejercicio 4
+```{r, child = "Ejercicios/Ejercicio4.Rmd"}
+
+```
+
+\newpage
+
+## 5. Titulo del ejercicio 5
+```{r, child = "Ejercicios/Ejercicio5.Rmd"}
+
+```
